@@ -33,6 +33,7 @@
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
+
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('flutter-first-frame', function () {
@@ -41,5 +42,30 @@
     }
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+  <script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDIP5Yvk3CYcCc7SJXALldoxbEnh7iPwy0",
+    authDomain: "hamrogadgets-941ea.firebaseapp.com",
+    projectId: "hamrogadgets-941ea",
+    storageBucket: "hamrogadgets-941ea.appspot.com",
+    messagingSenderId: "420064949623",
+    appId: "1:420064949623:web:e08a9b9ec1374045ba5d72",
+    measurementId: "G-WCM09MKYTD"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+</script>
 </body>
 </html>
