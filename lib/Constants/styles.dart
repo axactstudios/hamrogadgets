@@ -38,8 +38,10 @@ class Styles {
     FontWeight fontWeight = FontWeight.w700,
     double fontSize = navBarItemsTextSize,
     double letterSpacing = 0,
+    TextDecoration textDecoration,
   }) {
     return TextStyle(
+      decoration: textDecoration,
       color: color,
       fontFamily: fontFamily,
       fontWeight: fontWeight,

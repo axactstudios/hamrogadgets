@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hamrogadgets/Constants/colors.dart';
 import 'package:hamrogadgets/Constants/styles.dart';
+import 'package:hamrogadgets/widgets/interactive_nav_item.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -8,109 +9,208 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  Color whiteColor = Colors.white;
   bool isSearching = false;
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          color: AppColors.footerBg,
+          height: MediaQuery.of(context).size.height * 0.0536,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Sun-Fri:',
+                      style: Styles.customTextStyle(
+                          color: AppColors.lightGrey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    Text(
+                      '  9:00 AM - 9:00 PM',
+                      style: Styles.customTextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Visit our showroom in Kathmandu, Nepal, 44600  ',
+                      style: Styles.customTextStyle(
+                          color: AppColors.lightGrey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    InteractiveNavItem(
+                      text: 'Contact Us',
+                      decoration: TextDecoration.underline,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.09,
+                      child: Center(
+                        child: InteractiveNavItem(
+                          text: 'Call Us: 01-4005108 ',
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 14,
+                    ),
+                    InteractiveNavItem(
+                      imagePath: 'assets/images/fbIcon.png',
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    InteractiveNavItem(
+                      imagePath: 'assets/images/instaIcon.png',
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        SearchWidget(),
+      ],
+    );
+  }
+}
+
+class SearchWidget extends StatefulWidget {
+  @override
+  _SearchWidgetState createState() => _SearchWidgetState();
+}
+
+class _SearchWidgetState extends State<SearchWidget> {
+  TextEditingController searchController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: MediaQuery.of(context).size.height * 0.0536,
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(0.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            InkWell(
-              child: Icon(Icons.menu),
-              onTap: () {},
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: InteractiveNavItem(
+                  imagePath: 'assets/images/hamroGadgetsLogo.png',
+                ),
+              ),
             ),
-            SizedBox(
-              width: 15,
-            ),
-            Image.asset(
-              'assets/images/hamroGadgetsLogo.png',
-              height: 40,
-              width: 70,
-            ),
-            SizedBox(
-              width: 30,
-            ),
-            isSearching == true
-                ? Expanded(
-                    child: Container(
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                          color: AppColors.searchBarColor,
-                          borderRadius: BorderRadius.all(Radius.circular(25))),
-                      child: Row(
-                        children: [
-                          Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: InkWell(
-                                splashColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                onTap: () {
-                                  setState(() {
-                                    isSearching = false;
-                                  });
-                                },
-                                child: Icon(Icons.close_rounded)),
-                          )
-                        ],
+            Expanded(
+              flex: 26,
+              child: TextFormField(
+                controller: searchController,
+                style: Styles.customTextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 12,
+                    color: AppColors.footerBg),
+                cursorColor: AppColors.lightGrey,
+                decoration: InputDecoration(
+                    hintText: 'Search the entire store..',
+                    hintStyle: Styles.customTextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12,
+                        color: AppColors.lightGrey),
+                    fillColor: AppColors.searchBarColor,
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(31),
+                      borderSide: BorderSide(
+                        color: Colors.white,
                       ),
                     ),
-                  )
-                : Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            'All Categories',
-                            style: Styles.navBarHeadingText,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'All Categories',
-                            style: Styles.navBarHeadingText,
-                          ),
-                          Spacer(),
-                          InkWell(
-                              splashColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              focusColor: Colors.transparent, 
-                              onTap: () {
-                                setState(() {
-                                  isSearching = true;
-                                  print('Pressed');
-                                });
-                              },
-                              child: Center(child: Icon(Icons.search)))
-                        ],
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(31),
+                      borderSide: BorderSide(
+                        color: Colors.white,
                       ),
                     ),
-                  ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(31),
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
+                    suffixIcon: Icon(
+                      Icons.search,
+                      color: AppColors.primaryColor,
+                      size: 14,
+                    )),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: InteractiveNavItem(
+                icon: Icon(
+                  Icons.favorite_border_outlined,
+                  color: Colors.black,
+                  size: 20,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: InteractiveNavItem(
+                icon: Icon(
+                  Icons.shopping_cart_outlined,
+                  color: Colors.black,
+                  size: 20,
+                ),
+              ),
+            ),
             SizedBox(
-              width: 15,
+              width: 5,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.shopping_cart),
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 6.0),
+                child: InteractiveNavItem(
+                  text: 'Login/Sign Up',
+                  color: Colors.black,
+                ),
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.favorite_border),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(),
-            )
           ],
         ),
       ),
     );
+  }
+}
+
+class Categories extends StatefulWidget {
+  @override
+  _CategoriesState createState() => _CategoriesState();
+}
+
+class _CategoriesState extends State<Categories> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
