@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hamrogadgets/Screens/home_screen.dart';
 import 'package:hamrogadgets/theme.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: buildLightTheme(context),
       title: 'Hamro Gadgets',
-      home: Scaffold(),
+      home: HomeScreen(),
     );
   }
 }

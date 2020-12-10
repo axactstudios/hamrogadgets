@@ -10,4 +10,5 @@ class AppColors {
   static const Color secondaryText = Color(0xff8C8C8C);
   static const Color inactiveHeading = Color(0xff666666);
   static const Color activeHeading = Color(0xff000000);
+  static const Color searchBarColor = Color(0xffEBEBEB);
 }
