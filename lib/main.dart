@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hamrogadgets/BannerModel/full_length_banner_notifier.dart';
 import 'package:hamrogadgets/Screens/home_screen.dart';
 import 'package:hamrogadgets/theme.dart';
 import 'package:provider/provider.dart';
+
+import 'Models/Banner/full_length_banner_notifier.dart';
+import 'Models/Categories/categories_notifier.dart';
 
 void main() {
   runApp(App());
@@ -25,6 +27,9 @@ class _AppState extends State<App> {
         providers: [
           ChangeNotifierProvider(
             create: (context) => FullLengthBannerAdNotifier(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => CategoriesNotifier(),
           ),
         ],
         child: HomeScreen(),

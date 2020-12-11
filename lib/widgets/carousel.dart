@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
-import 'package:hamrogadgets/BannerModel/full_length_banner.dart';
+import 'package:hamrogadgets/Models/Banner/full_length_banner.dart';
 
 class Carousel extends StatefulWidget {
   List<FullLengthBanner> banners;

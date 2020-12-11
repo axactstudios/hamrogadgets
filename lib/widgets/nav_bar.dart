@@ -203,14 +203,3 @@ class _SearchWidgetState extends State<SearchWidget> {
   }
 }
 
-class Categories extends StatefulWidget {
-  @override
-  _CategoriesState createState() => _CategoriesState();
-}
-
-class _CategoriesState extends State<Categories> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hamrogadgets/BannerModel/full_length_banner_notifier.dart';
-import 'package:hamrogadgets/BannerModel/full_length_banner_service.dart';
+import 'package:hamrogadgets/Models/Banner/full_length_banner_notifier.dart';
+import 'package:hamrogadgets/Models/Banner/full_length_banner_service.dart';
 import 'package:hamrogadgets/Utils.dart';
 import 'package:hamrogadgets/widgets/all_widgets.dart';
 import 'package:hamrogadgets/widgets/carousel.dart';
@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen>
     //             }()
     //           : showNoInternetSnack(_scaffoldKey)
     // });
-
     FullLengthBannerAdNotifier fullLengthBannerAdNotifier =
         Provider.of<FullLengthBannerAdNotifier>(context, listen: false);
     getFullLengthBannerAds(fullLengthBannerAdNotifier);

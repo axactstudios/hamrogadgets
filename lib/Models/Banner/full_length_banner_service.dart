@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hamrogadgets/BannerModel/full_length_banner.dart';
-import 'package:hamrogadgets/BannerModel/full_length_banner_notifier.dart';
+import 'full_length_banner.dart';
+import 'full_length_banner_notifier.dart';
 
 getFullLengthBannerAds(FullLengthBannerAdNotifier bannerAdNotifier) async {
   QuerySnapshot snapshot =

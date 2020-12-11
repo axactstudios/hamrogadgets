@@ -1,7 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
-import 'package:hamrogadgets/BannerModel/full_length_banner.dart';
+
+import 'full_length_banner.dart';
 
 class FullLengthBannerAdNotifier with ChangeNotifier {
   List<FullLengthBanner> _bannerAdsList = [];
