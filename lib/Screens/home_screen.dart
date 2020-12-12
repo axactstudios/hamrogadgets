@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hamrogadgets/Models/Banner/ad_banner_notifier.dart';
+import 'package:hamrogadgets/Models/Banner/ad_banner_service.dart';
 import 'package:hamrogadgets/Models/Banner/full_length_banner_notifier.dart';
 import 'package:hamrogadgets/Models/Banner/full_length_banner_service.dart';
+import 'package:hamrogadgets/Models/Product/NewProducts/new_products_notifier.dart';
+import 'package:hamrogadgets/Models/Product/NewProducts/new_products_service.dart';
 import 'package:hamrogadgets/Utils.dart';
+import 'package:hamrogadgets/widgets/ads_banners_line.dart';
 import 'package:hamrogadgets/widgets/all_widgets.dart';
 import 'package:hamrogadgets/widgets/carousel.dart';
+import 'package:hamrogadgets/widgets/new_products_line.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/nav_bar.dart';
@@ -31,6 +37,12 @@ class _HomeScreenState extends State<HomeScreen>
     FullLengthBannerAdNotifier fullLengthBannerAdNotifier =
         Provider.of<FullLengthBannerAdNotifier>(context, listen: false);
     getFullLengthBannerAds(fullLengthBannerAdNotifier);
+    NewProductsNotifier newProductsNotifier =
+        Provider.of<NewProductsNotifier>(context, listen: false);
+    getNewProducts(newProductsNotifier);
+    AdBannerNotifier adBannerNotifier =
+        Provider.of<AdBannerNotifier>(context, listen: false);
+    getBannerAds(adBannerNotifier);
 
     super.initState();
   }
@@ -39,8 +51,15 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     FullLengthBannerAdNotifier fullLengthBannerAdNotifier =
         Provider.of<FullLengthBannerAdNotifier>(context);
-    var bannerAds = fullLengthBannerAdNotifier.bannerAdsList;
+    var fullLengthBannerAds = fullLengthBannerAdNotifier.bannerAdsList;
 
+    NewProductsNotifier newProductsNotifier =
+        Provider.of<NewProductsNotifier>(context);
+    var newProducts = newProductsNotifier.newProductsList;
+
+    AdBannerNotifier adBannerNotifier =
+        Provider.of<AdBannerNotifier>(context, listen: false);
+    var bannerAds = adBannerNotifier.bannerAdsList;
     return FutureBuilder(
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         return Scaffold(
@@ -49,11 +68,19 @@ class _HomeScreenState extends State<HomeScreen>
             child: Column(
               children: [
                 NavBar(),
-                Carousel(
+                FullLengthCarousel(
                   aspectRatio: 5.5,
                   height: 300,
-                  banners: bannerAds,
-                )
+                  banners: fullLengthBannerAds,
+                ),
+                NewProductsLine(
+                  newProducts: newProducts,
+                ),
+                bannerAds.length != 0
+                    ? AdBannersLine(
+                        banners: bannerAds,
+                      )
+                    : Container()
               ],
             ),
           ),

@@ -6,6 +6,7 @@ import 'colors.dart';
 
 const String FontFamily = 'Poppins';
 const double navBarItemsTextSize = 14;
+const double productNameTextSize = 13;
 
 class Styles {
   static const TextStyle navBarHeadingText = TextStyle(
@@ -13,6 +14,13 @@ class Styles {
     fontFamily: FontFamily,
     fontWeight: FontWeight.w700,
     fontSize: navBarItemsTextSize,
+  );
+  static const TextStyle productCardName = TextStyle(
+    color: AppColors.activeHeading,
+    fontFamily: FontFamily,
+    // fontWeight: FontWeight.w700,
+
+    fontSize: productNameTextSize,
   );
   static const TextStyle HeadingText = TextStyle(
     color: AppColors.activeHeading,
