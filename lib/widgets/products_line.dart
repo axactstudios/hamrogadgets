@@ -3,14 +3,15 @@ import 'package:hamrogadgets/Constants/styles.dart';
 import 'package:hamrogadgets/Models/Product/product.dart';
 import 'package:hamrogadgets/widgets/product_%20card.dart';
 
-class NewProductsLine extends StatefulWidget {
-  List<Product> newProducts;
-  NewProductsLine({this.newProducts});
+class ProductsLine extends StatefulWidget {
+  List<Product> products;
+  String title;
+  ProductsLine({this.products, this.title});
   @override
-  _NewProductsLineState createState() => _NewProductsLineState();
+  _ProductsLineState createState() => _ProductsLineState();
 }
 
-class _NewProductsLineState extends State<NewProductsLine> {
+class _ProductsLineState extends State<ProductsLine> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +20,7 @@ class _NewProductsLineState extends State<NewProductsLine> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'New Products',
+            widget.title,
             style: Styles.customTextStyle(
               fontSize: 21,
               color: Colors.black.withOpacity(0.7),
@@ -30,10 +31,10 @@ class _NewProductsLineState extends State<NewProductsLine> {
             height: 400,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: widget.newProducts.length,
+              itemCount: widget.products.length,
               itemBuilder: (context, i) {
                 return ProductCard(
-                  product: widget.newProducts[i],
+                  product: widget.products[i],
                 );
               },
             ),

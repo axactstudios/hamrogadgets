@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hamrogadgets/Models/Banner/ad_banner.dart';
 
 class AdBannersLine extends StatefulWidget {
-  List<AdBanner> banners;
-  AdBannersLine({this.banners});
+  AdBanner banner1, banner2, banner3;
+  AdBannersLine({this.banner1, this.banner2, this.banner3});
   @override
   _AdBannersLineState createState() => _AdBannersLineState();
 }
@@ -20,17 +20,17 @@ class _AdBannersLineState extends State<AdBannersLine> {
               children: [
                 Expanded(
                   child: Image.network(
-                    widget.banners[0].imageURL,
+                    widget.banner1.imageURL,
                   ),
                 ),
                 Expanded(
                   child: Image.network(
-                    widget.banners[1].imageURL,
+                    widget.banner2.imageURL,
                   ),
                 ),
                 Expanded(
                   child: Image.network(
-                    widget.banners[2].imageURL,
+                    widget.banner3.imageURL,
                   ),
                 )
               ],
@@ -45,18 +45,18 @@ class _AdBannersLineState extends State<AdBannersLine> {
                   children: [
                     Expanded(
                       child: Image.network(
-                        widget.banners[0].imageURL,
+                        widget.banner1.imageURL,
                       ),
                     ),
                     Expanded(
                       child: Image.network(
-                        widget.banners[1].imageURL,
+                        widget.banner2.imageURL,
                       ),
                     ),
                   ],
                 ),
                 Image.network(
-                  widget.banners[2].imageURL,
+                  widget.banner3.imageURL,
                   height: 250,
                 ),
               ],

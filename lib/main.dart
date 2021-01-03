@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hamrogadgets/Models/Banner/full_length_banner_notifier.dart';
+import 'package:hamrogadgets/Models/Product/TrendingProducts/trending_products_notifier.dart';
+import 'package:hamrogadgets/Models/Testimonials/testimonial_notifier.dart';
 import 'package:hamrogadgets/Screens/home_screen.dart';
 import 'package:hamrogadgets/theme.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +35,9 @@ class _AppState extends State<App> {
             create: (context) => NewProductsNotifier(),
           ),
           ChangeNotifierProvider(create: (context) => AdBannerNotifier()),
+          ChangeNotifierProvider(
+              create: (context) => TrendingProductsNotifier()),
+          ChangeNotifierProvider(create: (context) => TestimonialNotifier()),
         ],
         child: HomeScreen(),
       ),
